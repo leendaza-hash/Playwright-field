@@ -8,14 +8,22 @@ test.describe('Homepage UI Validation', () => {
   });
 
   test('Validate homescreen UI elements', async ({ page }) => {
-    const pagetitle = page.getByText('Practice Black Box Testing &');
-    const testingguidebutton = page.getByRole('button', { name: 'Testing Guide' });
-    const bughuntingbutton = page.getByRole('button', { name: '🐛 Bug Hunting' });
+    const Pagetitle = page.getByText('Practice Black Box Testing &');
+    const Testingguidebutton = page.getByRole('button', { name: 'Testing Guide' });
+    const Bughuntingbutton = page.getByRole('button', { name: '🐛 Bug Hunting' });
+    const Home = page.getByText('Home');
+    const Categories = page.getByTestId('nav-categories');
+    const Contact = page.getByText('Contact');
+    const Signin = page.getByRole('link', { name: 'Sign in' });
 
     // To validate the presence of the elements on the homepage
-    await expect(pagetitle).toBeVisible();
-    await expect(testingguidebutton).toBeVisible();
-    await expect(bughuntingbutton).toBeVisible();
+    await expect(Pagetitle).toBeVisible();
+    await expect(Testingguidebutton).toBeVisible();
+    await expect(Bughuntingbutton).toBeVisible();
+    await expect(Home).toBeVisible();
+    await expect(Categories).toBeVisible();
+    await expect(Contact).toBeVisible();
+    await expect(Signin).toBeVisible();
   });
 });
 
