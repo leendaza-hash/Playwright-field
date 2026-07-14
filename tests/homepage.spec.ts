@@ -24,6 +24,12 @@ test.describe('Homepage UI Validation', () => {
     await expect(homePage.categories).toBeVisible();
     await expect(homePage.contact).toBeVisible();
     await expect(homePage.signIn).toBeVisible();
+    await expect(homePage.sort).toBeVisible();
+    await expect(homePage.priceRange).toBeVisible();
+    await expect(homePage.searchInput).toBeVisible();
+    await expect(homePage.filter).toBeVisible();
+    await expect(homePage.byBrand).toBeVisible();
+    await expect(homePage.sustainability).toBeVisible();
   });
 });
 
