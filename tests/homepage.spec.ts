@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { HomePage } from '../pages/HomePage.PageObject';
+import { HomePage } from '../src/pages/HomePage.PageObject';
 
 test.describe('Homepage UI Validation', () => {
    let homePage: HomePage;
@@ -9,12 +9,7 @@ test.describe('Homepage UI Validation', () => {
    await page.goto('/');
   });
 
-  test('Validate homescreen UI elements', async ({ page }) => {
-    homePage = new HomePage(page);
-    await homePage.navigateTo();
-  });
-
-  test('should validate homescreen UI elements', async () => {
+  test('Validate homescreen UI elements', async () => {
     // Assertions remain in the test file, cleanly reading from the page object
     // To validate the presence of the elements on the homepage
     await expect(homePage.pageTitle).toBeVisible();
