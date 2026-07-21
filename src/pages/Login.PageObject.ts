@@ -31,8 +31,6 @@ constructor(private readonly page: Page) {
 
   }
 
-
-
 async navigateTo() {
     await this.page.goto('/');
   }
