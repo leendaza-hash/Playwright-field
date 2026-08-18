@@ -1,8 +1,18 @@
 import {test as base} from '@playwright/test';
+import { LoginPage } from '../src/pages/Login.PageObject';
+import { HomePage } from '../src/pages/HomePage.PageObject';
 
-
-//To create a new test with custom fixtures, we can use the base test and extend it with our own fixtures. In this case, we are creating a fixture for login functionality.
-type MyFixtures = {
-  login: (username: string, password: string) => Promise<void>;
+type Fixtures = {
+  loginPage: LoginPage;
+  homePage: HomePage;
 };
 
+export const test = base.extend<Fixtures>({
+  loginPage: async ({ page }, use) => {
+    await use(new LoginPage(page));
+  },
+
+  homePage: async ({ page }, use) => {
+    await use(new HomePage(page));
+  },
+});

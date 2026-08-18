@@ -12,6 +12,7 @@ export class LoginPage {
     public readonly loginFooter: Locator;
     public readonly registerLink: Locator;
     public readonly forgotPassword: Locator;
+    public readonly errorMessage: Locator;
 
 
 
@@ -23,15 +24,16 @@ constructor(private readonly page: Page) {
     this.emailFieldPlaceholder = page.getByPlaceholder('Your Email');
     this.passwordFieldTitle = page.getByText('Password *');
     this.passwordFieldPlaceholder = page.getByPlaceholder('Your Password');
-    this.bulletEye = page.getByTestId('login-form').getByRole('button', { name: '' });
+    this.bulletEye = page.getByTestId('login-form')
     this.loginButton = page.getByTestId('login-submit');
     this.loginFooter = page.getByText('Not yet an account? Register');
     this.registerLink = page.getByTestId('register-link');
     this.forgotPassword = page.getByTestId('forgot-password-link');
+    this.errorMessage = page.getByText('Invalid email or password');
 
   }
 
-async navigateTo() {
-    await this.page.goto('/');
-  }
+//async navigateTo() {
+ //   await this.page.goto('/');
+  //}
 }
