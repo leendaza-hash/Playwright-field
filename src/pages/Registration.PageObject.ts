@@ -28,6 +28,8 @@ export class RegistrationPage {
     public readonly passwordField: Locator;
     public readonly passwordStrength: Locator;
     public readonly registerButton: Locator;
+    public readonly errorMessageEmail: Locator;
+    public readonly errorMessagePassword: Locator;
 
 
 
@@ -40,32 +42,35 @@ export class RegistrationPage {
 
 constructor(private readonly page: Page) {
     this.formLabel = page.getByRole('heading', { name: 'Customer registration' });
-    this.firstNameFieldLabel = page.getByText('First Name *');
-    this.firstNameField = page.getByTestId('first-name').getByPlaceholder('Your First Name*');
-    this.lastNameFieldLabel = page.getByText('Last Name *');
-    this.lastNameField = page.getByTestId('last-name').getByPlaceholder('Your Last Name*');
-    this.dateOfBirthLabel = page.getByText('Date of Birth *');
-    this.dateOfBirthField = page.getByTestId('dob').getByPlaceholder('DD/MM/YYYY');
-    this.countryLabel = page.getByText('Country *');
-    this.countryDropdown = page.locator('[data-test="country"]').getByRole('combobox');
+    this.firstNameFieldLabel = page.locator('label[for="first_name"]');
+    this.firstNameField = page.getByTestId('first-name');
+    this.lastNameFieldLabel = page.locator('label[for="last_name"]');
+    this.lastNameField = page.getByTestId('last-name');
+    this.dateOfBirthLabel = page.locator('label[for="dob"]');
+    this.dateOfBirthField = page.getByTestId('dob');
+    this.countryLabel = page.locator('label[for="country"]');
+    this.countryDropdown = page.locator('[data-test="country"]');
     this.postcodeLookupHint = page.getByTestId('postcode-lookup-hint');
-    this.postalCodeFieldLabel = page.getByText('Postal Code');
-    this.postalCodeField = page.getByTestId('postcode').getByPlaceholder('Your Postal Code*');
-    this.houseNumberField = page.getByTestId('house-number').getByPlaceholder('Your House Number*');
-    this.streetLabel = page.getByText('Street');
-    this.streetField = page.getByTestId('street').getByPlaceholder('Your Street*');
-    this.cityLabel = page.getByText('City');
-    this.cityField = page.getByTestId('city').getByPlaceholder('Your City*');
-    this.stateFieldLabel = page.getByText('State');
-    this.stateField = page.getByTestId('state').getByPlaceholder('Your State*');
-    this.phoneFieldLabel = page.getByText('Phone');
-    this.phoneField = page.getByTestId('phone').getByPlaceholder('Your Phone*');
-    this.emailaddressLabel = page.getByText('Email Address *');
-    this.emailaddressField = page.getByTestId('email').getByPlaceholder('Your Email Address*');
-    this.passwordLabel = page.getByText('Password *');
-    this.passwordField = page.getByTestId('password').getByPlaceholder('Your Password*');
+    this.postalCodeFieldLabel = page.locator('label[for="postal_code"]');
+    this.postalCodeField = page.getByLabel('Postal code');
+    this.houseNumberField = page.getByLabel('House number');
+    this.streetLabel = page.locator('label[for="street"]');
+    this.streetField = page.getByLabel('street');
+    this.cityLabel = page.locator('label[for="city"]');
+    this.cityField = page.getByLabel('City');
+    this.stateFieldLabel = page.locator('label[for="state"]');
+    this.stateField = page.getByLabel('State');
+    this.phoneFieldLabel = page.locator('label[for="phone"]');
+    this.phoneField = page.getByLabel('Phone');
+    this.emailaddressLabel = page.locator('label[for="email"]');
+    this.emailaddressField = page.getByLabel('Email address');
+    this.passwordLabel = page.locator('label[for="password"]');
+    this.passwordField = page.getByLabel('Password');
     this.passwordStrength = page.getByText('Password strength:');
     this.registerButton = page.getByRole('button', { name: 'Register' });
+    this.errorMessageEmail = page.getByText('Email format is invalid');
+    this.errorMessagePassword = page.getByText('Password can not include invalid characters.');
+
 
   }
   async fillfirstNameField(name: string) {

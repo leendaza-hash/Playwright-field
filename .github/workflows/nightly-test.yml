@@ -11,23 +11,36 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 1. Checkout repository
       - name: Checkout code
         uses: actions/checkout@v5
 
+      # 2. Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v5
         with:
           node-version: 20
+          cache: npm
 
+      # 3. Verify Node.js and npm versions
+      - name: Check Node and npm version
+        run: |
+          node --version
+          npm --version
+
+      # 4. Install project dependencies
       - name: Install dependencies
         run: npm ci
 
+      # 5. Install Playwright browsers and dependencies
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
+      # 6. Run Playwright tests
       - name: Run Playwright tests
         run: npx playwright test
 
+      # 7. Upload Playwright HTML report
       - name: Upload Playwright report
         if: always()
         uses: actions/upload-artifact@v6
