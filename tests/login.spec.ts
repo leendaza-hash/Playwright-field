@@ -75,8 +75,10 @@ test('Should display error message for invalid email and valid password', async 
 
 test('Should login successfully with valid credentials', async ({ page }) => {
     const loginPage = new LoginPage(page);
-    await loginPage.emailFieldPlaceholder.fill('testuser03@gmail.com');
-    await loginPage.passwordFieldPlaceholder.fill('T3st1234@');
+    const email = 'testuser03@gmail.com';
+    const password = 'T3st1234@';
+    await loginPage.emailFieldPlaceholder.fill(email);
+    await loginPage.passwordFieldPlaceholder.fill(password);
     await loginPage.loginButton.click();
     await expect(page).toHaveURL('https://practicesoftwaretesting.com/account');
 
