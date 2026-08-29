@@ -6,7 +6,7 @@ test.describe('Login Page', () => {
 
 
 test.beforeEach(async ({ page }) => {
-        await page.goto('/');
+        await page.goto('/', { waitUntil: 'domcontentloaded' });
         const homePage = new HomePage(page);
         await homePage.signIn.click();
 });
