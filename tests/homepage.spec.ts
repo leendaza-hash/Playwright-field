@@ -6,7 +6,7 @@ test.describe('Homepage UI Validation', () => {
 
   test.beforeEach(async ({ page }) => {
    homePage = new HomePage(page);
-   await page.goto('/');
+   await page.goto('/', { waitUntil: 'domcontentloaded' });
   });
 
   test('Validate homescreen UI elements', async () => {
