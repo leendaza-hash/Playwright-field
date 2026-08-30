@@ -53,7 +53,7 @@ constructor(private readonly page: Page) {
     this.postcodeLookupHint = page.getByTestId('postcode-lookup-hint');
     this.postalCodeFieldLabel = page.locator('label[for="postal_code"]');
     this.postalCodeField = page.getByLabel('Postal code');
-    this.houseNumberField = page.getByLabel('House number');
+    this.houseNumberField = page.getByRole('textbox', { name: 'House number' });
     this.streetLabel = page.locator('label[for="street"]');
     this.streetField = page.getByLabel('street');
     this.cityLabel = page.locator('label[for="city"]');
