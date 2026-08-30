@@ -8,8 +8,6 @@ test.describe('Login Page', () => {
 test.beforeEach(async ({ page }) => {
         await page.goto('/', { waitUntil: 'domcontentloaded' });
         const homePage = new HomePage(page);
-        //debug 3000 timeout issue
-        //await expect(homePage.signIn).toBeVisible({ timeout: 10000 });
         await homePage.signIn.click();
 });
 
