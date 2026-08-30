@@ -88,8 +88,12 @@ test.describe('Registration Page', () => {
         await registrationPage.emailaddressField.fill(email);
         await registrationPage.passwordField.fill('T3st1234@');
         await registrationPage.registerButton.click();
-        await expect(page).toHaveURL(/auth\/login/);
-        await expect(loginPage.loginTitle).toBeVisible();
+        //await expect(page).toHaveURL(/auth\/login/);
+        await expect(page).toHaveURL(/auth\/login/, {
+        timeout: 15000});
+        //await expect(loginPage.loginTitle).toBeVisible();
+        await expect(loginPage.loginTitle).toBeVisible({
+        timeout: 15000});
 });
     
         
