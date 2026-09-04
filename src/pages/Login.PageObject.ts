@@ -4,9 +4,11 @@ export class LoginPage {
     public readonly loginTitle: Locator;
     public readonly googleButton: Locator;
     public readonly emailFieldTitle: Locator;
-    public readonly emailFieldPlaceholder: Locator;
+    //public readonly emailFieldPlaceholder: Locator;
+    public readonly emailField: Locator;
     public readonly passwordFieldTitle: Locator;
-    public readonly passwordFieldPlaceholder: Locator;
+    //public readonly passwordFieldPlaceholder: Locator;
+    public readonly passwordField: Locator;
     public readonly bulletEye: Locator;
     public readonly loginButton: Locator;
     public readonly loginFooter: Locator;
@@ -21,9 +23,11 @@ constructor(private readonly page: Page) {
     this.loginTitle = page.getByRole('heading', { name: 'Login' })
     this.googleButton = page.getByRole("button", { name: 'Sign in with Google' });
     this.emailFieldTitle = page.getByText('Email address *');
-    this.emailFieldPlaceholder = page.getByPlaceholder('Your Email');
+    //this.emailFieldPlaceholder = page.getByPlaceholder('Your email');
+    this.emailField = page.getByTestId('email');
     this.passwordFieldTitle = page.getByText('Password *');
-    this.passwordFieldPlaceholder = page.getByPlaceholder('Your Password');
+    //this.passwordFieldPlaceholder = page.getByPlaceholder('Your password');
+    this.passwordField = page.getByTestId('password');
     this.bulletEye = page.getByTestId('login-form')
     this.loginButton = page.getByTestId('login-submit');
     this.loginFooter = page.getByText('Not yet an account? Register');

@@ -1,16 +1,21 @@
 import {test, expect} from '@playwright/test';
 import { LoginPage } from '../src/pages/Login.PageObject';
-import { HomePage } from '../src/pages/HomePage.PageObject';
+//import { HomePage } from '../src/pages/HomePage.PageObject';
 
 test.describe('Login Page', () => {
 
 
 test.beforeEach(async ({ page }) => {
-        await page.goto('/', { waitUntil: 'domcontentloaded' });
-        const homePage = new HomePage(page);
-        //debug 3000 timeout issue
-        //await expect(homePage.signIn).toBeVisible({ timeout: 10000 });
-        await homePage.signIn.click();
+        await page.goto('/auth/login', { waitUntil: 'domcontentloaded' });
+        //const homePage = new HomePage(page);
+        //await homePage.signIn.click();
+        const signIn = page.getByTestId('nav-sign-in');
+        //await page.getByRole('link', { name: 'Sign in' }).click();
+        await expect(signIn).toBeVisible();
+        await expect(signIn).toBeEnabled();
+
+        await signIn.click();
+        //await expect(page).toHaveURL(/\/auth\/login/);
 });
 
 
@@ -20,9 +25,9 @@ test.beforeEach(async ({ page }) => {
         await expect(loginPage.loginTitle).toBeVisible();
         await expect(loginPage.googleButton).toBeVisible();
         await expect(loginPage.emailFieldTitle).toBeVisible();
-        await expect(loginPage.emailFieldPlaceholder).toBeVisible();
+        await expect(loginPage.emailField).toBeVisible();
         await expect(loginPage.passwordFieldTitle).toBeVisible();   
-        await expect(loginPage.passwordFieldPlaceholder).toBeVisible();     
+        await expect(loginPage.passwordField).toBeVisible();     
         await expect(loginPage.bulletEye).toBeVisible();
         await expect(loginPage.loginButton).toBeVisible();
         await expect(loginPage.loginFooter).toBeVisible();
@@ -37,8 +42,8 @@ test.beforeEach(async ({ page }) => {
 
   test('Should display error message for invalid credentials', async ({ page }) => {
     const loginPage = new LoginPage(page);
-    await loginPage.emailFieldPlaceholder.fill('invalid@example.com');
-    await loginPage.passwordFieldPlaceholder.fill('invalidpassword');
+    await loginPage.emailField.fill('invalid@example.com');
+    await loginPage.passwordField.fill('invalidpassword');
     await loginPage.loginButton.click();
 
     await expect(loginPage.errorMessage).toHaveText('Invalid email or password');
@@ -50,8 +55,8 @@ test.beforeEach(async ({ page }) => {
 
  test('Should display error message for valid email and invalid password', async ({ page }) => {
     const loginPage = new LoginPage(page);
-    await loginPage.emailFieldPlaceholder.fill('testuser02@gmail.com');
-    await loginPage.passwordFieldPlaceholder.fill('invalidpassword');
+    await loginPage.emailField.fill('testuser02@gmail.com');
+    await loginPage.passwordField.fill('invalidpassword');
     await loginPage.loginButton.click();
 
     await expect(loginPage.errorMessage).toHaveText('Invalid email or password');
@@ -63,8 +68,8 @@ test.beforeEach(async ({ page }) => {
 
 test('Should display error message for invalid email and valid password', async ({ page }) => {
     const loginPage = new LoginPage(page);
-    await loginPage.emailFieldPlaceholder.fill('invalid@gmail.com');
-    await loginPage.passwordFieldPlaceholder.fill('T3st1234@');
+    await loginPage.emailField.fill('invalid@gmail.com');
+    await loginPage.passwordField.fill('T3st1234@');
     await loginPage.loginButton.click();
 
     await expect(loginPage.errorMessage).toHaveText('Invalid email or password');
@@ -77,8 +82,8 @@ test('Should display error message for invalid email and valid password', async 
 
 test('Should login successfully with valid credentials', async ({ page }) => {
     const loginPage = new LoginPage(page);
-    await loginPage.emailFieldPlaceholder.fill('testuser03@gmail.com');
-    await loginPage.passwordFieldPlaceholder.fill('T3st1234@');
+    await loginPage.emailField.fill('testuser03@gmail.com');
+    await loginPage.passwordField.fill('T3st1234@');
     await loginPage.loginButton.click();
     //await expect(page).toHaveURL('https://practicesoftwaretesting.com/account');
 
