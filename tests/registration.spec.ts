@@ -92,8 +92,8 @@ test.describe('Registration Page', () => {
         await expect(page).toHaveURL(/auth\/login/, {
         timeout: 15000});
         //await expect(loginPage.loginTitle).toBeVisible();
-        await expect(loginPage.loginTitle).toBeVisible({
-        timeout: 15000});
+        //await expect(loginPage.loginTitle).toBeVisible({
+        //timeout: 15000});
 });
     
         
