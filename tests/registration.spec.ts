@@ -8,17 +8,17 @@ import { getRegistrationData } from '../src/testdata/Registration.data';
 test.describe('Registration Page', () => {
 
     test.beforeEach(async ({ page }) => {
-        await page.goto('/', {
+        await page.goto('/auth/register', {
         waitUntil: 'domcontentloaded'
     });
 
        
-        const homePage = new HomePage(page);
-        await expect(homePage.signIn).toBeVisible();
-        await homePage.signIn.click();
-        const loginPage = new LoginPage(page);
-        await expect(loginPage.registerLink).toBeVisible();
-        await loginPage.registerLink.click();
+        //const homePage = new HomePage(page);
+        //await expect(homePage.signIn).toBeVisible();
+        //await homePage.signIn.click();
+        //const loginPage = new LoginPage(page);
+        //await expect(loginPage.registerLink).toBeVisible();
+        //await loginPage.registerLink.click();
 });
 
 

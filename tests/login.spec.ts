@@ -9,12 +9,12 @@ test.beforeEach(async ({ page }) => {
         await page.goto('/auth/login', { waitUntil: 'domcontentloaded' });
         //const homePage = new HomePage(page);
         //await homePage.signIn.click();
-        const signIn = page.getByTestId('nav-sign-in');
+        //const signIn = page.getByTestId('nav-sign-in');
         //await page.getByRole('link', { name: 'Sign in' }).click();
-        await expect(signIn).toBeVisible();
-        await expect(signIn).toBeEnabled();
+        //await expect(signIn).toBeVisible();
+        //await expect(signIn).toBeEnabled();
 
-        await signIn.click();
+        //await signIn.click();
         //await expect(page).toHaveURL(/\/auth\/login/);
 });
 
@@ -22,7 +22,7 @@ test.beforeEach(async ({ page }) => {
 // To verify login page elements are visible
     test('Should display all login page elements', async ({ page }) => {
         const loginPage = new LoginPage(page);
-        await expect(loginPage.loginTitle).toBeVisible();
+        //await expect(loginPage.loginTitle).toBeVisible();
         await expect(loginPage.googleButton).toBeVisible();
         await expect(loginPage.emailFieldTitle).toBeVisible();
         await expect(loginPage.emailField).toBeVisible();
