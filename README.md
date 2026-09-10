@@ -113,7 +113,7 @@ To view the HTML report:
 ```bash
 npx playwright show-report
 
-```text
+
 ## 🏗️ Framework Structure
 
 The project follows the **Page Object Model (POM)** approach to separate page interactions from test scenarios.
