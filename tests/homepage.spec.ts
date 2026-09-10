@@ -1,5 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { HomePage } from '../src/pages/HomePage.PageObject';
+import { LoginPage } from '../src/pages/Login.PageObject';
+
 
 test.describe('Homepage UI Validation', () => {
    let homePage: HomePage;
@@ -25,6 +27,18 @@ test.describe('Homepage UI Validation', () => {
     await expect(homePage.filter).toBeVisible();
     await expect(homePage.byBrand).toBeVisible();
     await expect(homePage.sustainability).toBeVisible();
-  });
-});
+  }
+);
 
+  test('Navigate to login page & register page', async ({ page }) => {
+    const homePage = new HomePage(page);
+    const loginPage = new LoginPage(page);
+    await homePage.signIn.click();
+    await expect(page).toHaveURL(/\/auth\/login/);
+    await loginPage.registerLink.click();
+    await expect(page).toHaveURL(/\/auth\/register/);
+    
+  }
+);
+    
+})
