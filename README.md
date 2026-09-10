@@ -140,6 +140,8 @@ PracticeSoftwareTesting/
 ├── package-lock.json
 └── README.md
 
+---
+
 ### Folder Description
 
 | Folder / File | Description |
