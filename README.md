@@ -139,3 +139,15 @@ PracticeSoftwareTesting/
 ├── package.json
 ├── package-lock.json
 └── README.md
+
+### Folder Description
+
+| Folder / File | Description |
+|---------------|-------------|
+| `pages/` | Page Object classes containing page locators and reusable page actions |
+| `tests/` | Playwright test specifications and test scenarios |
+| `.github/workflows/` | GitHub Actions CI/CD workflow configuration |
+| `playwright.config.ts` | Playwright configuration including browsers, base URL, workers, screenshots, traces and reporting |
+| `package.json` | Project dependencies and npm scripts |
+| `package-lock.json` | Locked dependency versions |
+| `README.md` | Project documentation |
