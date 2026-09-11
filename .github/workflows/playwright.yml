@@ -19,8 +19,8 @@ jobs:
       run: npx playwright install --with-deps
     - name: Run Playwright tests
       env:
-          VALID_EMAIL: ${{ secrets.VALID_EMAIL }}
-          VALID_PASSWORD: ${{ secrets.VALID_PASSWORD }}
+          VALID_EMAIL: ${{ secrets.VALID_EMAIL1}}
+          VALID_PASSWORD: ${{ secrets.VALID_PASSWORD1}}
           INVALID_EMAIL: ${{ secrets.INVALID_EMAIL }}
           INVALID_PASSWORD: ${{ secrets.INVALID_PASSWORD }}
           WRONG_PASSWORD: ${{ secrets.WRONG_PASSWORD }}
