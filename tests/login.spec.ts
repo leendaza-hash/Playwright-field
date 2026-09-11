@@ -1,6 +1,7 @@
 import {test, expect} from '@playwright/test';
 import { LoginPage } from '../src/pages/Login.PageObject';
 //import { HomePage } from '../src/pages/HomePage.PageObject';
+import { loginData } from '../src/testdata/Login.data';
 
 test.describe('Login Page', () => {
 
@@ -40,10 +41,12 @@ test.beforeEach(async ({ page }) => {
 
 //To verify Login page with invalid email & password
 
-  test('Should display error message for invalid credentials', async ({ page }) => {
+  test('Should display error message for Invalid email, invalid password', async ({ page }) => {
     const loginPage = new LoginPage(page);
-    await loginPage.emailField.fill('invalid@example.com');
-    await loginPage.passwordField.fill('invalidpassword');
+    const { invalidUser } = loginData();
+
+    await loginPage.emailField.fill(invalidUser.email);
+    await loginPage.passwordField.fill(invalidUser.password);
     await loginPage.loginButton.click();
 
     await expect(loginPage.errorMessage).toHaveText('Invalid email or password');
@@ -53,10 +56,12 @@ test.beforeEach(async ({ page }) => {
 
 //To verify Login page with valid email & invalid password
 
- test('Should display error message for valid email and invalid password', async ({ page }) => {
+ test('Should display error message for Valid email and invalid password', async ({ page }) => {
     const loginPage = new LoginPage(page);
-    await loginPage.emailField.fill('testuser02@gmail.com');
-    await loginPage.passwordField.fill('invalidpassword');
+    const { invalidUser } = loginData();
+    const { validUser } = loginData();
+    await loginPage.emailField.fill(validUser.email);
+    await loginPage.passwordField.fill(invalidUser.password);
     await loginPage.loginButton.click();
 
     await expect(loginPage.errorMessage).toHaveText('Invalid email or password');
@@ -68,8 +73,10 @@ test.beforeEach(async ({ page }) => {
 
 test('Should display error message for invalid email and valid password', async ({ page }) => {
     const loginPage = new LoginPage(page);
-    await loginPage.emailField.fill('invalid@gmail.com');
-    await loginPage.passwordField.fill('T3st1234@');
+    const { invalidUser } = loginData();
+    const { validUser } = loginData();
+    await loginPage.emailField.fill(invalidUser.email);
+    await loginPage.passwordField.fill(validUser.password);
     await loginPage.loginButton.click();
 
     await expect(loginPage.errorMessage).toHaveText('Invalid email or password');
@@ -82,10 +89,12 @@ test('Should display error message for invalid email and valid password', async 
 
 test('Should login successfully with valid credentials', async ({ page }) => {
     const loginPage = new LoginPage(page);
-    await loginPage.emailField.fill('testuser03@gmail.com');
-    await loginPage.passwordField.fill('T3st1234@');
+    const { validUser } = loginData();
+
+    await loginPage.emailField.fill(validUser.email);
+    await loginPage.passwordField.fill(validUser.password);
     await loginPage.loginButton.click();
-    //await expect(page).toHaveURL('https://practicesoftwaretesting.com/account');
+    await expect(page).toHaveURL('/account');
 
     //await expect(loginPage.errorMessage).toHaveText('Invalid email or password');
   }
