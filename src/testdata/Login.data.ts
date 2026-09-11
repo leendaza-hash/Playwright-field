@@ -17,7 +17,7 @@ export function loginData() {
     
     invalidEmailValidPassword: {
       email: process.env.INVALID_EMAIL!,
-      password: process.env.VALID_PASSWORD1
+      password: process.env.VALID_PASSWORD2
     }
 
   };
