@@ -11,13 +11,13 @@ export function loginData() {
     },
 
     validEmailInvalidPassword: {
-      email: process.env.VALID_EMAIL!,
+      email: process.env.VALID_EMAIL1,
       password: process.env.WRONG_PASSWORD!
     },
     
     invalidEmailValidPassword: {
       email: process.env.INVALID_EMAIL!,
-      password: process.env.VALID_PASSWORD!
+      password: process.env.VALID_PASSWORD1
     }
 
   };
