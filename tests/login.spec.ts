@@ -69,6 +69,17 @@ test.beforeEach(async ({ page }) => {
   );
 
 
+  test('Should display error message for null email and null password', async ({ page }) => {
+    const loginPage = new LoginPage(page);
+    await loginPage.emailField.fill('');
+    await loginPage.passwordField.fill('');
+    await loginPage.loginButton.click();
+    await expect(loginPage.emailError).toHaveText('Email is required');
+    await expect(loginPage.passwordError).toHaveText('Password is required');
+  }
+ );
+
+
 //To verify Login page with invalid email & valid password
 
 test('Should display error message for invalid email and valid password', async ({ page }) => {

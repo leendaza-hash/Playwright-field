@@ -15,6 +15,8 @@ export class LoginPage {
     public readonly registerLink: Locator;
     public readonly forgotPassword: Locator;
     public readonly errorMessage: Locator;
+    public readonly emailError: Locator;
+    public readonly passwordError: Locator;
 
 
 
@@ -34,6 +36,8 @@ constructor(private readonly page: Page) {
     this.registerLink = page.getByTestId('register-link');
     this.forgotPassword = page.getByTestId('forgot-password-link');
     this.errorMessage = page.getByText('Invalid email or password');
+    this.emailError = page.getByTestId('email-error');
+    this.passwordError = page.getByTestId('password-error');
 
   }
 
